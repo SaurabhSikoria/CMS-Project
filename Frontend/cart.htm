@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Frontend/fontawesome-5.15.3-web/css/all.css">
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .itmes-space {
+            margin: 5px 0px;
+            padding: .7rem;
+        }
+
+        body {
+            background-color: lightgray;
+        }
+        .container {
+            /* display: grid; */
+            position: relative;
+            margin: 10vh;
+         }
+       /* .items-space {
+            grid-column-start: 1;
+            grid-column-end: 3;
+        } */
+        .final-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0%;
+            margin: 4vh;
+        }
+        .cart-item {
+            padding: 1rem .5rem;
+            border-radius: 10px;
+            border: solid 1px black;
+            margin: 1rem 0;
+            display: flex;
+        }
+        .rice {
+            margin: auto;
+        }
+        .cart-info {
+            margin-left: 2%;
+        }
+        .cart-info h4 {
+            text-transform: uppercase;
+        }
+        .quantity {
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .rice h5 {
+            margin: 0 1.3rem;
+        }
+        .price-list h3, h4{
+            text-transform: uppercase;
+            font-style: normal;
+            margin: .7rem 0;
+        }
+        .price-list h4 {
+            border-radius: 5px;
+            background-color: rgb(248, 144, 144);
+            padding: .4rem 5%;
+            height: 47px;
+        }
+        .price-list span, select{
+            float: right;
+            border-radius: 10px;
+        }
+        /* .cart-items{
+            display: flex;
+        } */
+    </style>
+</head>
+<body>
+    <div class="container bg-light row">
+        <div class="items-space col-8">
+            <!-- here items are inserted -->
+        </div>
+        <div class="details col-4 border-dark  border-start-2">
+            <div class="price-list items-space">
+                <center><h3>ordering details</h3></center>
+                <h5>dish name <span class="dish_price">$20</span></h5>
+                <h5>Total  <span id="total_price">0</span></h5>
+                <h4>order for table : <select name="table_no" id="table_no">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select></h4>
+            </div>
+            <button class='btn btn-success final-btn'>Place Your Order</button>
+        </div>
+    </div>
+</body>
+<script src="app.js"></script>
+</html>

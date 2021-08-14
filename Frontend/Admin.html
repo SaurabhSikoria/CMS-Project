@@ -1,0 +1,140 @@
+<html>
+
+    <head>
+         <meta name='viewport' content="initial-scale=1">
+    
+        <title>ADMIN - FOR YOU</title>
+        <link rel="stylesheet" href='admin.css'>
+    </head>
+ <body>
+<div class='wrapper'>    
+     <header class='header'> 
+        <span>	      
+  	      <img id ='logo' src="image/logo3.svg">	
+         	<h1>7 WONDERS</h1>
+         </span>
+        <span id='admin'> <img src="image/Admin.svg"></span>      
+        <ul class='mainTab'>        
+         <h3 style='
+    padding: 0em 3.5em 0em 4.5em;
+    font-size: 1.3rem;
+    color: coral;
+    margin-top: .8rem;
+    letter-spacing: .2rem;'>Dashboard</h3> 
+         <a onclick="slide1('all')"><li>All</li></a>
+         <a onclick="slide1('start')"><li>Starter</li></a>
+         <a onclick="slide1('main')"><li>Main Course</li></a>
+         <a onclick="slide1('drink')"><li>Drinks</li></a> 
+
+              <select style="float:right;margin-left: -8%;
+    margin-top: -0.7%;">
+                Sort By- 
+               
+               <option>Old to New</option>
+               <option>New to Old</option>
+               <option>Name[A-Z]</option>
+
+            </select>
+         
+          </ul>
+          
+             <li class="headLabel">
+                 <b class='list-indent'>Image</b>
+                 <b class='list-indent l2'>Dish Name</b>
+                 <b class='list-indent l3'>Category</b>
+                 <b class='list-indent l4'>Half Price</b>
+                 <b class='list-indent l4'>Full Price</b>
+              </li>
+       
+  </header>
+
+      <main class='main'>
+       
+         <div class='Dishes'>        
+           <div id='all'>
+            <ul id='alldishes'>
+              
+           </ul>
+         </div>
+           <div id='start'>starter</div>
+           <div id='main'>Main</div>
+           <div id='drink'>COur</div>
+         </div>
+   
+ </main>  
+ <main class="order content">
+   <h2>Recieve The Orders Placed by Your Customers</h2>
+   <div id="allorders">
+     
+   </div>
+ </main>
+ <main class="delievery content">
+   <h2>YOu've Served these orders to your Customers</h2>
+  <div id="alldelievery">
+    
+   </div>
+ </main>
+ <main class="profile">
+   <div class="username">Username  :  Saurabh</div>
+   <div class="user_email">Email :    highfsdh@gmao.com</div>
+   <div class="mobile_no">Mobile No.  :   521453124321</div>
+   <div class="restaurantName">Owner of Restaurant  :   7WONDERS </div>
+ </main>
+        <aside class='aside'>
+  	       <ul>
+               <a onclick='profileDisplay();'><li>Profile</li></a>
+               <a onclick='Active();'><li>Avaliable Dishes</li></a>
+                <a onclick="showOrder()"><li>Orders</li></a>
+                <a onclick="delievered()"><li>Delievery</li></a>
+                <a onclick="Logout()"><li>Log Out</li></a>	
+ 	              <li id='create' onclick="create()"><span>+</span></li>
+                
+        </ul>
+                  
+      </aside>
+  
+   </div>
+            
+<section id='dialogbox'>
+
+  <span id='cross' onclick='cross()'>+</span>
+
+  <form name='form1' id='form1' >
+
+    <select id='options' placeholder='-Select a Category-' class="category" name="category" required>
+          <option value="starter">Starter</option>
+          <option value="main">Main Course</option>
+          <option value="drinks">Drinks</option>
+    </select>
+  
+    <input type="text" placeholder="Dish Name" id='dname' name="dname" required>
+    <input type="text" placeholder='Half Price' id="hprice" name="hprice">
+
+    <input type="text" placeholder='Full Price' id="fprice" name="fprice" required>
+  
+    <label style='border:none;  background: transparent;  color: rgba(0,0,0,0.5); text-shadow: none; font-weight: 700;'>
+
+    <input type="radio" value="1" name='veg' style='width: 2.3rem;  height: 1.1rem;'>veg
+            
+    <input type="radio" value="0" name='veg' style='width: 5rem;  height: 1.1rem;  margin-left: 4rem;'>non-veg
+
+    </label>
+
+    <label for='upload'>
+
+      <input type="file" name="image" required> <span> Choose an Image </span>
+
+    </label>
+    
+    <button type='submit' style='color: ghostwhite;  background: #8fc0e6;' >ADD</button>
+
+    </form>
+
+</section>
+
+<div class="delscreen">
+  <div class="dcontent"><h3>Your Dish has been deleted</h3></div>
+</div>
+ </body>
+<script src="admin.js"></script>
+ </html>

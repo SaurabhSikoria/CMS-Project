@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+    }
+    body{
+        background-color: lightgrey;
+    }
+    .container{
+        background-color: white;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+    .D_values{
+        padding: 2%;
+        border-radius: 30px;
+        margin-top: 20px;
+    }
+    .btn{
+        padding: 1.5%;
+        align-self: center;
+        background-color: green;
+        font-size: 1em;
+        font-weight: 500;
+        color: white;
+        text-transform: uppercase;
+        border-radius: 20px;
+        margin: 30px 0 20px 0;
+    }
+</style>
+<body>
+    <div class="container">
+        <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <select class="D_values" name="category" id="category">
+            <option value="Main Course">Main Course</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Beverages">Beverages</option>
+        </select><br>
+        <input class="D_values" type="text" name="Dname" placeholder="Name of the Dish"><br>
+        <input class="D_values" type="number" name="price" placeholder="Enter the price"><br>
+        <input type="file" name="imageUpload" id="imageUpload"><br>
+        <button class="btn success-btn">Add In Menu</button>
+    </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en">
+ <head>
+    <meta   name='viewport' content="initial-scale=1">
+       <meta name=description content='something'>
+       <title>HBZ - FOR YOU</title>
+        <link rel="stylesheet" href="registration.css">
+    </head>
+<body>
+  
+  <fieldset class='field1'>
+ 
+     <img id='firstlogo' src='image/logo3.svg'> 
+
+     <legend> 
+
+         <H1 id='one'>7 WO</H1>
+         <H1 id='two'>ND</H1>
+         <H1 id='three'>ERS</H1> 
+      
+         <H3> A Tour Of Taste Starts Here</H3>
+
+     </legend>
+    
+
+	  <section id='headbutt'>
+
+           <button class='butt1' onclick='signup();'> Sign Up</button>
+           <button class='butt2'> Log In</button>
+   
+       </section>
+
+<form id='Signpage1' class='page pg1' action=""> 
+
+   <div class="subpage2 sub" id='sign'> 
+                    
+        <label for="user">   
+        <input type='text' id="Ids" name='Email Id' 
+        onblur='BlurEle(this);' 
+        onchange="Removelabel(this);" required>
+        
+        <span><img class='spanImg' alt="not found" src="image/admin.svg">Name</span>
+        
+        </label>
+    
+        <label for="Email ID" id='txt1'>
+        <input type="text" id="EId" name='email' 
+        onblur='BlurEle(this);' 
+        onchange="Removelabel(this);" required placeholder="">
+        
+        <span id='mail'><img class='spanImg' alt="not found" src="image/Mail.svg">Email</span>       
+        
+        </label>
+
+        <label for="Password">
+        
+        <input type="password" id="pass1" name='password' 
+        onblur='BlurEle(this);'
+        onchange="Removelabel(this);"  required placeholder="">
+        
+        <span><img class='spanImg' alt="not found" src="image/Password.svg">Password</span> 
+
+        </label> 
+        
+        <label for="Number">
+        
+        <input type="text" id="IdNum" name='number' title="Enter 10 digits" pattern="[0-9]{10}" maxlength='10' 
+        onblur='BlurEle(this);' 
+        onchange="Removelabel(this);" required placeholder="">
+        
+        <span><img class='spanImg' alt="not found" src="image/Mobile.svg">Mob.</span> 
+        
+        </label>
+        
+        <label for="restaurant">    
+        <input type='text' id="rest1" onblur='BlurEle(this);'  onchange="Removelabel(this);"  name='restaurant' required>
+        <span><img class='spanImg' alt="not found" src="image/Res.svg">Restaurant</span>
+        </label>
+    <section>
+    
+    <button>Submit</button>
+    <button>Reset</button>
+    <span id='Account'> Already Have an Account? <a style='cursor:pointer;color: #cad8ba; text-decoration: underline;
+    text-decoration-color: #cad8ba;'> Click Here </a></span>
+          </section>   
+           </div>
+    </form>
+    </fieldset>
+     <div class='field2 div1'>
+      <form id='page2' class='page pg2'> 
+       
+         <div class='admin1'>
+           
+               <span><img src='image/admin.svg'></span>
+
+              <img id= mainlogo alt="not found" src='image/logo3.svg'> 
+              <H1 id='one'>7 WONDERS</H1> 
+          </div>
+
+              <div id='paging2'> 
+
+             <div class="subpage2" style="overflow:hidden;"> 
+
+                  <div class="subpage2" id="subpage3"> 
+
+                   <label class="loglabel" for="user">   
+                   <input type='text' 
+                   title='Enter your Email' id="IdE"
+                    name='Email_Id' value="Ashutosh"
+                    onblur='BlurEle(this);' onchange="Removelabel(this);"  required>
+                   <span><img class='spanImg' alt="not found" src="image/Mail.svg">Email</span>
+                   </label>
+                
+                <label class="loglabel" for="Password">
+                <input type="password" title='Enter your Password' value="Goyal" id="pass2" name='password' 
+                onblur='BlurEle(this);' onchange="Removelabel(this);"  required placeholder="">
+
+                <span><img class='spanImg' alt="not found"  src="image/Password.svg">Password</span> 
+                </label> 
+                <span class='forgot'><a href="">Forgot password?</a></span>
+              
+               <button class="loglabel" id='buttLogo' type="submit"> Log In</button>
+               
+               <span id='result'></span>
+
+               <span class='forgot forgot1'>New User? <a id='linkSign' href=''>Sign up</a></span>
+
+           </div>  
+
+      </form> 
+  
+</div>
+
+</div>
+
+
+ </body>
+
+ <script type="text/javascript">
+   
+  let field1 = document.querySelector('.field1');
+  let field2 = document.querySelector('.field2');
+  let butt2 = document.querySelector('.butt2');
+  let butt1 = document.querySelector('.butt1');
+  let login = document.getElementById('Account');  
+  let sub = document.querySelector('.sub');
+  const loginform = document.querySelector('#page2');
+
+  loginform.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formdata = new FormData(loginform);
+        fetch('http://localhost/phpconnecting/verifyuser.php', {
+          method: 'POST',
+          body: formdata
+        }).then(res => res.text()).then(item => {
+            location.replace('Admin.html');
+            localStorage.setItem('owner', JSON.stringify(item))
+        }).catch((err) => console.error(err))
+      })
+  var boxframes = [
+    {
+        transform: 'translateX(0)',
+        opacity: 1
+    },{
+        transform: 'translateX(-800px)',
+        opacity:0,
+      
+    }
+]
+
+
+
+  var boxframes1 = [
+    {
+        left: '80%',
+        opacity: 1
+    },
+    {
+        left: '30%',
+        opacity: .5,
+        offset: 0.6
+    },
+    {
+        left: '0%',
+        opacity:1
+    }
+]
+
+
+function animatebox(){
+
+  field1.animate(boxframes, {
+      duration: 200,
+      fill: 'forwards',
+      easing: 'ease-out'
+  })
+
+  field2.animate(boxframes1, {
+      duration: 200,
+      fill: 'forwards',
+      easing: 'ease-out'
+  })
+
+document.querySelector('.field2').style.display='block';
+document.querySelector('.field2').style.animation='none';
+ }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+butt2.addEventListener('click', animatebox, false);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+login.addEventListener('click', animatebox, false);
+});
+
+
+
+let res = document.getElementById('result');
+let res1 = document.getElementById('result1');
+let pg = document.getElementById('page2');
+let pg1 = document.getElementById('page3');
+
+function signup(){
+
+
+var boxframes1 = [
+    {
+        left: '30%',
+        opacity: .5,
+        offset: 0.6
+    },
+    {
+        left: '0%',
+        opacity:1
+    }
+]
+
+var boxframes = [
+    {
+        left: '30%',
+        opacity: .5,
+    },
+    {
+        left: '0%',
+        top: '0%',
+        opacity:1
+    }
+]
+var boxframes3 = [
+    {
+        transform: 'scale(0.9)'
+    
+    }
+]
+  let logo = document.querySelector('#firstlogo');
+  let buttons = document.querySelector('#headbutt');
+  let pg = document.querySelector('.pg1');
+  let legend = document.querySelector('.field1 legend');
+
+ 
+
+function animatebox(){
+  pg.animate(boxframes1, {
+      duration: 300,
+      fill: 'forwards',
+      easing: 'ease-in',
+      scrollBehavior: 'smooth'
+  })
+
+  sub.animate(boxframes, {
+      duration: 400,
+      fill: 'forwards',
+      easing: 'ease-in',
+      scrollBehavior: 'smooth'
+  })
+
+  field1.animate(boxframes3, {
+      duration: 300,
+      fill: 'forwards',
+      easing: 'ease-in',
+      scrollBehavior: 'smooth'
+  })
+
+
+ }
+
+animatebox();
+
+  buttons.style.display='none';
+  logo.style.display='none'; 
+  legend.style.top='-3%';
+  legend.style.transition='top 300ms ease-out';
+  document.querySelector('.field1 legend').innerHTML ='<h1 style="opacity:1; height:20vw;" id="register">Registration Form</h1>';
+}
+
+ var elemInput = document.getElementsByTagName("label").length;
+
+ var elemInput1 = document.getElementsByTagName("label");
+
+ var elemInput2 = document.getElementsByTagName("input");
+
+for(var i=0;  i < elemInput; i++) {
+  
+   let elem = elemInput1[i];
+
+   let elem1 = elemInput2[i];
+
+   
+    function BlurEle(elem){
+
+      elem.nextElementSibling.classList.remove('inputfont');
+      elem.nextElementSibling.children[0].classList.remove('inputImg');
+}
+
+function Removelabel(elem1){
+
+          
+     elem1.removeAttribute('onblur','');
+  
+   }
+
+
+
+elem.addEventListener('click',function(e){
+      
+      elem.children[1].classList.add('inputfont');
+       elem.children[1].children[0].classList.add('inputImg');
+      elem1.focus();
+   
+
+ });
+
+}
+
+
+
+
+</script>
+
+</html>
+
