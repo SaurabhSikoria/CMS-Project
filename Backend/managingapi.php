@@ -53,7 +53,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && $_REQUEST['q'] != '') {
        }
        print_r(get_data($conn));
 }
-if($_SERVER['REQUEST_METHOD'] === 'POST' && $_REQUEST['disable'] != '') {
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_REQUEST['disable'])) {
     $id = number_format($_REQUEST['disable']);
     if(isset($id)) {  
     $sql = "update cms.menu set status='unactive' WHERE id = ".$id;
@@ -61,9 +61,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && $_REQUEST['disable'] != '') {
     echo 'dish has been disabled';
     else echo 'failed to disable';
     }
-    // while($row = mysqli_fetch_assoc($result))
 }
-else if($_SERVER['REQUEST_METHOD'] === 'POST' && $_REQUEST['enable'] != '') {
+else if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_REQUEST['enable'])) {
     $id = number_format($_REQUEST['enable']);
     if(isset($id)) {  
     $sql = "update cms.menu set status='active' WHERE id = ".$id;
@@ -72,7 +71,6 @@ else if($_SERVER['REQUEST_METHOD'] === 'POST' && $_REQUEST['enable'] != '') {
     else
     echo 'failed';
     }
-    // while($row = mysqli_fetch_assoc($result))
 }
 else if($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['QUERY_STRING'] == '') {
     $ext = explode('.', $_FILES['image']['name']);
