@@ -10,6 +10,9 @@ const clearcartbtn = document.querySelector('.clear-cart');
 const placeorderbtn = document.querySelector('.place-order');
 const search = document.getElementById('search');
 const result = document.querySelector('.result');
+const vegdishes = document.querySelector('#Veg-dishes');
+const nonvegdishes = document.querySelector('#nonVeg-dishes');
+const alldishes = document.querySelector('#All-dishes');
 
 let cart = [];
 let buttonsDom = [];
@@ -59,9 +62,9 @@ class UI {
         let result = '';
         dishes.forEach(dish => {
             let veg = '';
-            if(dish.veg == 0) 
+            if(dish.veg == 1) 
             veg = `<img src="./image/veg.png" class='veg-type' alt="Veg">`;
-            else if (dish.veg == 1)
+            else if (dish.veg == 0)
             veg = `<img src="./image/non-veg.png" class='veg-type' alt="Non-Veg">`;
             result += `<div class="items ">    
             <div class="card">
@@ -69,7 +72,12 @@ class UI {
                 <div class="card-body">
                     <h4 class="card-title text-uppercase">${dish.rest_name}</h4>
                     <h5 class="card-title text-uppercase">${dish.name}</h5>
-                    <div class="card-text text-lowercase">${dish.price}</div>
+                    <div class="card-text text-lowercase pricing">
+                    <div><input type="radio" name='order' value="${dish.half_price}"><span>Half-Plate : <strong>${dish.half_price}</strong></span>
+                    </div>
+                    <div><input type="radio" name='order' value="${dish.price}"><span>Full-Plate : <strong>${dish.price}</strong></span>
+                    </div>
+                    </div>
                     <button class='cd-btn btn btn-primary text-capitalize addtoCart' data-id=${dish.dish_id}>add to cart</button>
                 </div>
             </div>
@@ -90,18 +98,28 @@ class UI {
                 button.classList.add('btn-success');
             } 
             button.addEventListener('click', event => {
-                event.target.innerHTML = 'Added';
-                event.target.disabled = true;
-                event.target.classList.remove('btn-primary');
-                event.target.classList.add('btn-success');
-                //get item form menu
-                let cartitem = { ...Storage.getItems(id), amount:1};
-                cart = [...cart, cartitem];
-                Storage.saveCart(cart);
-                //set cart values
-                this.valuesinCart(cart);
-                this.addtoCart(cartitem);
-                
+                let btn = event.target;
+                const adding = (btn) => {
+                    btn.innerHTML = 'Added';
+                    btn.disabled = true;
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-success');
+                    let cartitem = { ...Storage.getItems(id), amount:1, orderprice:chosen};
+                    cart = [...cart, cartitem];
+                    Storage.saveCart(cart);
+                    this.valuesinCart(cart);
+                    this.addtoCart(cartitem);
+                }
+                let chosen;
+                if(btn.previousElementSibling.children[0].children[0].checked){
+                    chosen = btn.previousElementSibling.children[0].children[0].value;
+                    adding(btn);
+                } else if(btn.previousElementSibling.children[1].children[0].checked) {
+                    chosen = btn.previousElementSibling.children[1].children[0].value;
+                    adding(btn);
+                } else {
+                    alert('Select the Plate type');
+                }              
             })
         })
     }; 
@@ -119,7 +137,7 @@ class UI {
         const div = document.createElement('div');
         div.classList.add('cart-item');
         div.innerHTML = `<div>
-        <img class="cart-img" src=${item.image} alt="ITEM IMAGE">
+        <img class="cart-img" src=./image/${item.image} alt="ITEM IMAGE">
         <div class="quantity">
             <button class=" btn-primary amt dec-item" data-id=${item.dish_id}>-</button>
             <h3 class="d-quantity">${item.amount}</h3>
@@ -132,7 +150,7 @@ class UI {
             <h4>restuarant</h4>
         </div>
         <div class="rice">
-            <h5><span class="dish_price">Rs.${item.price}</span></h5>
+            <h5><span class="dish_price">Rs.${item.orderprice}</span></h5>
             <button class="btn btn-danger remove-dish" data-id=${item.dish_id}>Remove</button>
         </div>`;
         incartitems.appendChild(div);
@@ -150,16 +168,11 @@ class UI {
         var result = confirm("You Wanna confirm placing your Order");
         if(result){
             let order = localStorage.getItem('cartitems');
-            // let test = JSON.parse(order);
-            // var keys = Object.keys(test[0]);
-            // for(let i=0; i<5; i++)
-            // console.log(keys[i]);
                 fetch('http://localhost/Backend/Menu.php', {
                     method : 'POST',
                     body : order
                 }).then(res => res.text()).then(data => console.log(data))
         }})
-        // listening to cart
         incartitems.addEventListener('click', event => {
             if (event.target.classList.contains('remove-dish')) {
                 let removedish = event.target;
@@ -200,7 +213,6 @@ class UI {
     }
     removeDish(id) {
         cart = cart.filter(item => item.dish_id !== id);
-        console.log(cart);
         this.valuesinCart(cart);
         Storage.saveCart(cart);
         let button = this.getoneButton(id);
@@ -249,12 +261,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
  ui.setupApp();
  menu.getMenu().then(data => {
-     console.log(data);
      ui.showmenu(data);
      Storage.saveitems(data);
     }).then(() =>{ ui.cartbtn(); ui.cartworking();} );
 });
-
+alldishes.addEventListener('click', () => {
+    const menu = new Menu();
+    const ui = new UI();
+   
+    ui.setupApp();
+    menu.getMenu().then(data => {
+        ui.showmenu(data);
+        Storage.saveitems(data);
+       }).then(() =>{ ui.cartbtn(); ui.cartworking();} );
+   });
 search.addEventListener('input', (event) => {
  const menu = new Menu();
  const ui = new UI();
@@ -266,4 +286,16 @@ search.addEventListener('input', (event) => {
         result.innerHTML = '';
     }
     });    
+})
+nonvegdishes.addEventListener('click', () => {
+    const ui = new UI();
+    var test = JSON.parse(localStorage.getItem('items'));
+    test = test.filter(item => item.veg == 0);
+    ui.showmenu(test);
+})
+vegdishes.addEventListener('click', () => {
+    const ui = new UI();
+    var test = JSON.parse(localStorage.getItem('items'));
+    test = test.filter(item => item.veg == 1);
+    ui.showmenu(test);
 })

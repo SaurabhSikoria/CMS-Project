@@ -300,8 +300,8 @@ class UI {
             item.style.background='#f8f8f8;';
             item.style.opacity=.3;
             item.disabled=true;
-            // fetch('http://localhost/Backend/managingapi.php?disable='+id, { method : 'POST'
-            // }).then(res => res.text()).then(status => console.log(status)).catch(err => console.error(err));
+            fetch('http://localhost/Backend/managingapi.php?disable='+id, { method : 'POST'
+            }).then(res => res.text()).then(status => alert(status)).catch(err => console.error(err));
             }
             else{
             slider.setAttribute('checked','true');
@@ -309,8 +309,8 @@ class UI {
             item.style.opacity=1;
             item.disabled=false;
             item.style.background='rgba(255,255,255,0.3)';
-            // fetch('http://localhost/Backend/managingapi.php?enable='+id, { method : 'POST'
-            // }).then(res => res.text()).then(status => console.log(status)).catch(err => console.error(err));
+            fetch('http://localhost/Backend/managingapi.php?enable='+id, { method : 'POST'
+            }).then(res => res.text()).then(status => alert(status)).catch(err => console.error(err));
             }
         }
       })

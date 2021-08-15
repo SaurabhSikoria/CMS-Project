@@ -42,6 +42,23 @@ header {
   box-shadow: inset 2px 2px 2px grey, 2px 2px 2px wheat;
   cursor: pointer;
 }
+.pricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
+  font-size: large;
+}
+.pricing span {
+  /* transform: translateX(-18px); */
+  background-color: #e8cdd2;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 0px 10px;
+}
+.pricing div {
+  margin: 5px 0;
+}
 #search {
   height: 2vw;
   width: 12vw;
