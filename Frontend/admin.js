@@ -6,7 +6,7 @@ const delievery = document.querySelector('.delievery');
 const alldelievery = document.querySelector('#alldelievery');
 const ownerinfo = JSON.parse(localStorage.getItem('owner'));
 const allorders = document.querySelector('#allorders');
-const {owner_id, rest_name, email, mobile, username} = JSON.parse(ownerinfo);
+const {owner_id, rest_name, email, mobile, username} = ownerinfo;
 function showOrder () {
   maindish.style.display = 'none';
   profile.style.display = 'none';
@@ -333,6 +333,7 @@ if(isAuthenticated()){
       const ui = new UI();
 
       menu.getMenu().then((data) => {
+        
           ui.showdishes(data);
           ui.functioning();
       })

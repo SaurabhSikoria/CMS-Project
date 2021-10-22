@@ -72,7 +72,17 @@ header {
   right: 4px;
   top: 10px;
 }
-
+#Noorders {
+  display: none;
+}
+.tbl {
+  background-color: antiquewhite;
+  padding: 6px;
+}
+#table_no {
+  background-color: bisque;
+  padding: 5px;
+}
 #search:focus {
   border: 4px solid cornflowerblue;
 }

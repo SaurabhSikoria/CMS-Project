@@ -4,111 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="client.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Menu Page</title>
+    <title>Document</title>
 </head>
 <style>
-    .card{
-        margin-bottom: 4%;
+    body{
+        margin: 0;
+        padding: 0;
     }
-    .cd-btn{
-        margin: 2%;
+    .container{
+        height: auto;
+        margin: 200px;
+        background-color: bisque;
+        padding: 1rem;
     }
-    .disp {
-  display: none;
-}
-    .wrapper{
-        margin: 0 6%;
-        margin-top: 90px;
+    .links{
+        display: flex;
+        justify-content: space-evenly;
+        margin: 0 200px;
+        align-items: center;
     }
-    @media(max-width: 200px) {
-        body{
-            margin: 1em
-        }
-    }
-    header a{
-        width: 55px;
-        flex-basis: auto;
-    }
-    .disp {
-        display: none;
-    }
-    /* .side ul {
+    a{
+        padding: 10px;
+        background-color: aliceblue;
+        border-radius: 50%;
+        color: black;
         text-decoration: none;
-        list-style: none;
-        color: rgb(211, 23, 101);
-    } */
-
+        font-weight: bold;
+    }
 </style>
 <body>
-    <header class="head">
-            <img id='logo' src="logo3.svg" alt="PIZZA IAMGE">
-            <h2>7WONDERS</h2>
-            <a href="registration.html"><img class="float-end" src="image/admin.svg" alt="TO Lodin"></a>
-    </header>
-    <div class="wrapper">
-    <div class="footer">
-        <img class="Cart" src="image/cart.png" onclick="displayingcart()" alt="Unable to load">
-        <span id='total_dishes'>0</span>
-    </div>
-    <nav class="navbar navbar-dark n">
-        <ul class="nav-list">
-            <li>
-                <div class="dropdown" id='All-dishes'>
-                    All
-                </div>
-            </li>
-            <li>
-                <div class="dropdown" id='nonVeg-dishes'>
-                    Non-Veg
-                </div>
-            </li>
-            <li>
-                <div class="dropdown" id='Veg-dishes'>
-                    Veg
-                </div>
-            </li>
-            <li>
-                <div class="dropdown">
-                    Filters
-                </div>
-            </li>
-        </ul>
-        <div >
-            <input type="search" id='search' placeholder="Search...">
-            <ul class="result">
-
-            </ul>
-        </div>
-
-    </nav>
-    <div></div>
-    <section class="section">
-        <div class="allDishes">
-        </div>        
-    </section>
-</div>
-<div class="hiddencart">
-    <span id="close-btn" onclick="closecart()">X</span>
     <div class="container">
-        <h3>Your Orders</h3>
-        <div class="items-space">
-        </div>
-        <div class="details border-dark  border-start-2">
-            <div class="price-list">
-                <h4>Total price <span id="price">Rs.<span id="total_price">0</span></span> </h4>
-                <!-- <h4>order for table : <select name="table_no" id="table_no">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select></h4> -->
-            </div>
-            <button class='btn btn-danger final-btn clear-cart'>Remove All</button>
-            <button class='btn btn-success final-btn place-order'>Place Your Order</button>
+        <center><h1>Choose The Table No. </h1></center>
+        <div class="links">
+            <a href="restaurant.htm?table=1">1</a>
+            <a href="restaurant.htm?table=2">2</a>
+            <a href="restaurant.htm?table=3">3</a>
+            <a href="restaurant.htm?table=4">4</a>
+            <a href="restaurant.htm?table=5">5</a>
+            <a href="restaurant.htm?table=6">6</a>
+            <a href="restaurant.htm?table=7">7</a>
+            <a href="restaurant.htm?table=8">8</a>
         </div>
     </div>
-</div>
 </body>
-<script src="app.js"></script>
 </html>

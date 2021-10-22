@@ -153,7 +153,7 @@
         fetch('http://localhost/phpconnecting/verifyuser.php', {
           method: 'POST',
           body: formdata
-        }).then(res => res.text()).then(item => {
+        }).then(res => res.json()).then(item => {
             location.replace('Admin.html');
             localStorage.setItem('owner', JSON.stringify(item))
         }).catch((err) => console.error(err))
